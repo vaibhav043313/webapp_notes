@@ -1,0 +1,114 @@
+{% load static %}
+/* ----- navbar css starts ---- */
+div#nav-bar {
+    padding: 0 50px;
+}
+a.navbar-brand.text-white.h2 {
+    font-size: 35px;
+}
+.navbar-end a {
+    border: 1px solid #fff;
+    padding: 10px;
+    background: white;
+    text-decoration: none;
+    color: black;
+}
+.navbar-end a:hover {
+    background: #212529;
+    border: 1px solid #fff;
+    color: #fff;
+}
+/* ----- navbar css ends ---- */
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'img/noteswallpaper.jpg' %}");
+  height: 50%;
+  background-image: url("../static/img/noteswallpaper.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-text {
+  text-align: center;
+  color: #000;
+  padding: 65px;
+  font-family: cursive;
+}
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+/* ----- main page css ends ---- */
+.control-blue, .control-red {
+    margin: 0 15px;
+}
+.control-blue a {
+    background: #0d6efd;
+    padding: 10px 30px;
+    text-decoration: none;
+    border: 1px solid;
+    color: white;
+    border-radius: .25rem;
+    border-color: #0d6efd;
+}
+.control-red a {
+    background: #dc3545;
+    padding: 10px 30px;
+    text-decoration: none;
+    border: 1px solid;
+    color: white;
+    border-radius: .25rem;
+    border-color: #dc3545;
+}
+div#content {
+    padding: 25px 0 10px 0px;
+    background: #f8f9fa;
+    margin: 10px 0;
+    display: flex;
+}
+div#col-button {
+    margin-top: 10px;
+}
+div#head {
+    padding-top: 30px;
+    font-family: auto;
+}
+.menu-list a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+/* ----- main page css ends ---- */
+/* ----- add note css starts ---- */
+label#title-error, label#content-error {
+    color: red;
+    font-weight: bold;
+}
+/* ----- add note css ends ---- */
+/* ----- copyright css starts ---- */
+.copyright.py-3.text-center {
+    border-top: 1px solid;
+}
+.copyright.py-3.text-center p {
+    margin-bottom: 0;
+}
+/* ----- copyright css ends ---- */
+/* ----- view more css starts ---- */
+.control-back a {
+    border: 1px solid aliceblue;
+    padding: 10px;
+    background: aliceblue;
+}
+/* ----- view more css ends ---- */

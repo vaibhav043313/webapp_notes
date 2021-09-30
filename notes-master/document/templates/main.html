@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="container">
+<div id="head">
+    <h1>All Notes</h1>
+</div>
+
+    {% for doc in documents %}
+    <div id="content" class="col-md-12">
+    <div class="col-md-6">
+         <ul class="menu-list">
+                                <li>
+                                    <a href="{% url 'editor' %}?docid={{ doc.id }}">{{ doc.title }}</a>
+                                </li>
+
+                        </ul>
+    </div>
+    <div id="col-button" class="col-md-6" style="display: flex;">
+        <div class="control-blue">
+            <a href="{% url 'view_more' %}?docid={{ doc.id }}">View</a>
+        </div>
+        <div class="control-blue">
+            <a href="{% url 'editor' %}?docid={{ doc.id }}">Edit</a>
+        </div>
+        <div class="control-red">
+            <a href="{% url 'delete_document' doc.id %}" class="">Delete</a>
+        </div>
+    </div>
+    </div>
+
+    {% endfor %}
+
+    </div>
+{% endblock %}

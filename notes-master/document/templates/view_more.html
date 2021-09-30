@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Notes</title>
+        <link href="{% static 'img/favicon.png' %}" rel="icon">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar is-dark">
+            <div class="navbar-brand">
+                <a href="{% url 'main' %}" class="navbar-item">Notes</a>
+            </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="{% url 'editor' %}?docid=0" class="navbar-item">Add a New Note</a>
+                </div>
+            </div>
+        </nav>
+        <div class="text-center"><b>View Page</b></div>
+        <section class="section">
+            <div class="columns">
+
+                <!-- list of all documents -->
+                <div class="column is-2">
+                    <aside class="menu">
+                        <p class="menu-label">Documents</p>
+
+                        <ul class="menu-list">
+                            {% for doc in documents %}
+                                <li>
+                                    <a href="{% url 'editor' %}?docid={{ doc.id }}">{{ doc.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+                <!-- //list of all documents -->
+
+                <div class="column is-10">
+                    <form method="post" action="{% url 'editor' %}">
+                        {% csrf_token %}
+
+                        <input type="hidden" name="docid" value="{{ docid }}">
+
+                        <div class="field">
+                            <label class="label">
+                               Note Title
+
+                                {% if document %}
+                                    <span class="has-text-grey-light">
+                                        Created at: {{ document.created_at|date:"m/d Y" }} /
+                                        Modified at: {{ document.modified_at|date:"m/d Y" }}
+                                    </span>
+                                {% endif %}
+                            </label>
+
+                            <div class="control">
+                                <input type="text" class="input" name="title" placeholder="Note Title"{% if document %} value="{{ document.title }}"{% endif %}>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Note Description</label>
+
+                            <div class="control">
+                                <textarea class="textarea" name="content" placeholder="Note Discription">{% if document %}{{ document.content }}{% endif %}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-back">
+                            <a href="{% url 'main' %}">Go Back</a>
+                        </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
